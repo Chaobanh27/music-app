@@ -1,0 +1,242 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+    background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+    color: #001f3f;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.player{
+    width: 636px;
+    padding: 48px 64px;
+    border-radius: 36px;
+    background-color: #eaeaea;
+    overflow: hidden;
+    position: relative;
+}
+.player .music-thumbnail{
+    height: 400px;
+    background-size: cover;
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px #aaaaaa,
+    -5px -5px 10px #ffffff;
+}
+.player .music-name{
+    margin-bottom: 8px;
+    text-align: center;
+}
+.player .music-author{
+    color: #a5aaaf;
+    text-align: center;
+}
+.player .player-progress .player-values{
+    display: flex;
+    justify-content: space-between;
+    color: #a5aaaf;
+    font-size: 14px;
+}
+.player .slider{
+    width: 100%;
+    cursor: pointer;
+}
+
+.player .player-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 25px;
+}
+.player .player-buttons .btn {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    color: #6f7275;
+    background: linear-gradient(145deg,#cacaca,#f0f0f0);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.player .player-buttons .btn.btn-prev{
+    box-shadow: 5px 5px 10px #aaaaaa,
+            -5px -5px 10px #ffffff;
+}
+.player .player-buttons .btn.btn-play{
+    box-shadow: 5px 5px 10px #aaaaaa,
+    -5px -5px 10px #ffffff;
+}
+
+.player .player-buttons .btn.btn-next{
+    box-shadow: 5px 5px 10px #aaaaaa,
+    -5px -5px 10px #ffffff;
+}
+@media (max-width: 768px){
+    .player{
+        width: 100%;
+        padding: 24px;
+    }
+    .player .player-buttons .btn{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.playlist{
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  left: 0;
+  bottom: -55%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  padding: 15px 30px;
+  border-radius: 15px;
+  transition: all 0.15s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+.show{
+  bottom: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+/* @media only screen and (max-width: 990px) {
+     .playlist{
+        margin-top: 30px;
+    }
+  } */
+.playlist-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  width: 100%;
+}
+.playlist-header .row{
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+}
+.playlist-header .row span{
+  margin-left: 5px;
+}
+.playlist-header #close{
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.playlist #songs-list {
+    width: 100%;
+    margin: 10px 0;
+    max-height: 260px;
+    overflow: auto;
+}
+.playlist #songs-list .song{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+    height: 50px;
+    width: 500px;
+}
+ .playlist #songs-list .songPlaying {
+    background: linear-gradient(to right, #5232c1, #12ccd0);
+    color: white;
+}
+ .playlist #songs-list .song .song-info{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+ .playlist #songs-list .song .song-info div:first-child{
+    font-weight: bold;
+}
+ .playlist #songs-list .song .song-info div:first-child::after{
+    content: " - ";
+}
+
+@keyframes quiet {
+  25%{
+    transform: scaleY(.6);
+  }
+  50%{
+    transform: scaleY(.4);
+  }
+  75%{
+    transform: scaleY(.8);
+  }
+}
+
+@keyframes normal {
+  25%{
+    transform: scaleY(1);
+  }
+  50%{
+    transform: scaleY(.4);
+  }
+  75%{
+    transform: scaleY(.6);
+  }
+}
+@keyframes loud {
+  25%{
+    transform: scaleY(1);
+  }
+  50%{
+    transform: scaleY(.4);
+  }
+  75%{
+    transform: scaleY(1.2);
+  }
+}
+
+.boxContainer{
+  display: flex;
+  justify-content: space-between;
+  height: 44px;
+  --boxSize: 8px;
+  --gutter: 4px;
+  width: calc((var(--boxSize) + var(--gutter)) * 5);
+  display: none;
+  margin-right: 10px;
+}
+.show{
+    display: flex;
+}
+.box{
+  transform: scaleY(.4);
+  height: 100%;
+  width: var(--boxSize);
+  background: #12E2DC;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  border-radius: 8px;
+}
+
+.box1{
+  animation-name: quiet;
+}
+
+.box2{
+  animation-name: normal;
+}
+
+.box3{
+  animation-name: quiet;
+}
+
+.box4{
+  animation-name: loud;
+}
+
+.box5{
+  animation-name: quiet;
+}
